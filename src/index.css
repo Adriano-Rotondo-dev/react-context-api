@@ -1,0 +1,28 @@
+@import "bootstrap";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.navbar-nav .nav-link.active {
+  color: orange;
+}
+
+.link {
+  color: orange;
+}
+button {
+  background-color: orange;
+  color: white;
+  text-decoration: none;
+  border: 1px solid;
+  transition: 0.2s ease;
+}
+button:active {
+  transform: scale(0.9);
+}
+.product-img {
+  max-width: 30rem;
+  max-height: 30rem;
+}
