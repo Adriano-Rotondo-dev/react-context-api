@@ -13,9 +13,11 @@ function ProductsProvider({ children }) {
     axios
       .get("https://fakestoreapi.com/products")
       .then((res) => {
-        setProducts(res.data);
-        console.log(res.data);
-        setIsLoading(false);
+        setTimeout(() => {
+          setProducts(res.data);
+          console.log(res.data);
+          setIsLoading(false);
+        }, 500); //0.5 sec timeout
       })
       .catch((err) => console.error(err));
   }, []);
