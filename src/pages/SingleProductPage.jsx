@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 //*importo axios in pagina
 import axios from "axios";
+
+import Loading from "../components/Loading";
+
 //*importo useParams da react-router-dom per associarlo all'id dell'oggetto dell'array
 //*importo useNavigate per la navigazione programmatica
 import { useParams, useNavigate } from "react-router-dom";
@@ -9,6 +12,8 @@ export default function SingleProductPage() {
   const { id } = useParams();
   //*dichiaro il product, il setter e lo useState su un array vuoto
   const [product, setProduct] = useState({});
+
+  const [isLoading, setIsLoading] = useState(true);
   //*dichiaro la funzione useNavigate
   const navigate = useNavigate();
 
@@ -18,10 +23,15 @@ export default function SingleProductPage() {
     axios.get(`https://fakestoreapi.com/products/${id}`).then((res) => {
       console.log(res.data);
       setProduct(res.data);
+      setIsLoading(false);
     });
     //! ricorda la dipendenza [] o genero loop infinito di fetch request
     //*aggiorno la dipendenza vuota a [id] per la funzionalità del navigate
   }, [id]);
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <>
       {/* copia della card singola di product - soluzione temporanea */}
@@ -63,7 +73,7 @@ export default function SingleProductPage() {
                 if (product.id > 1) {
                   navigate(`/products/${product.id - 1}`);
                 } else {
-                  navigate("/object-not-found"); // o torna alla lista
+                  navigate("/object-not-found");
                 }
               }}
             >

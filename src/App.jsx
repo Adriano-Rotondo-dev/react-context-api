@@ -14,6 +14,7 @@ function App() {
     <>
       {/* add browser router component  */}
       <BrowserRouter>
+        {/* add Provider wrapper for context   */}
         <ProductsProvider>
           <Routes>
             <Route Component={DefaultLayout}>
