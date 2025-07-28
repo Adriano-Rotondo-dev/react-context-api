@@ -26,3 +26,6 @@ button:active {
   max-width: 30rem;
   max-height: 30rem;
 }
+.spin {
+  height: 50vh;
+}

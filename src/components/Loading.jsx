@@ -1,9 +1,9 @@
 export default function Loading() {
   return (
     <>
-      <div class="d-flex justify-content-center">
-        <div class="spinner-border" role="status">
-          <span class="sr-only">Loading...</span>
+      <div className="container d-flex justify-content-center align-items-center spin">
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
         </div>
       </div>
     </>
