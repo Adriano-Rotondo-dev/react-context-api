@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+//*import context
+import { useProducts } from "../contexts/ProductsContext";
 
 export default function ProductsPage() {
-  const [products, setProducts] = useState([]);
+  const { products, setProducts } = useProducts();
 
   useEffect(() => {
     axios

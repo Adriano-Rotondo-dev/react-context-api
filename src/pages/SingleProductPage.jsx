@@ -8,7 +8,7 @@ import { useParams, useNavigate } from "react-router-dom";
 export default function SingleProductPage() {
   const { id } = useParams();
   //*dichiaro il product, il setter e lo useState su un array vuoto
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState({});
   //*dichiaro la funzione useNavigate
   const navigate = useNavigate();
 
@@ -60,11 +60,11 @@ export default function SingleProductPage() {
             <button
               className="fw-semibold rounded-pill px-4 py-2"
               onClick={() => {
-                navigate(
-                  product.id > 0
-                    ? `/products/${product.id - 1}`
-                    : "/object-not-found"
-                );
+                if (product.id > 1) {
+                  navigate(`/products/${product.id - 1}`);
+                } else {
+                  navigate("/object-not-found"); // o torna alla lista
+                }
               }}
             >
               Previous Item
